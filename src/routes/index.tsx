@@ -23,7 +23,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "ABTalks — 60-Day Coding Challenge" },
       {
         property: "og:description",
-        content: "Build daily. Ship to GitHub. Share your progress on LinkedIn.",
+        content: "Turn 60 days of consistent building into real proof of work. Build daily, ship to GitHub, share on LinkedIn.",
       },
     ],
   }),

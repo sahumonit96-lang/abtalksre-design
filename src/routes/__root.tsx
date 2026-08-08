@@ -82,17 +82,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Turn 60 days of consistent building into real proof of work with the ABTalks coding challenge.",
+          "Turn 60 days of consistent building into real proof of work. Build daily, ship to GitHub, share on LinkedIn.",
       },
       { name: "author", content: "ABTalks" },
       { property: "og:title", content: "ABTalks — 60-Day Coding Challenge" },
       {
         property: "og:description",
-        content: "Build daily. Ship to GitHub. Share your progress on LinkedIn.",
+        content: "Turn 60 days of consistent building into real proof of work. Build daily, ship to GitHub, share on LinkedIn.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "ABTalks — 60-Day Coding Challenge" },
+      { name: "twitter:description", content: "Turn 60 days of consistent building into real proof of work. Build daily, ship to GitHub, share on LinkedIn." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/04256680-88f4-4986-8cbc-89e1c54871cc" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/04256680-88f4-4986-8cbc-89e1c54871cc" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
