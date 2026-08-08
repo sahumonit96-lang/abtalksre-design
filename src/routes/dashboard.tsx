@@ -1,14 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Link } from "@tanstack/react-router";
-import { StreakCard } from "@/components/StreakCard";
-import { ChallengeCard } from "@/components/ChallengeCard";
-import { ProgressCard } from "@/components/ProgressCard";
-import { AchievementCard } from "@/components/AchievementCard";
-import { JourneyGrid } from "@/components/JourneyGrid";
+import { useState } from "react";
+import { Flame } from "lucide-react";
+import { AppShell } from "@/components/layout/AppShell";
+import { MetricCard } from "@/components/common/MetricCard";
+import { TodayChallengeCard } from "@/components/common/TodayChallengeCard";
+import { SubmitProofModal } from "@/components/proof/SubmitProofModal";
+import { DayGrid } from "@/components/common/DayGrid";
+import { GithubDisconnectedNotice } from "@/components/common/States";
 import { Scratchpad } from "@/components/Scratchpad";
-import { StandingCard } from "@/components/StandingCard";
-import { BottomNav } from "@/components/BottomNav";
-import { CURRENT_DAY, TOTAL_DAYS, TRACK, USER_NAME } from "@/data/mockData";
+import { useAppState } from "@/state/AppState";
 
 export const Route = createFileRoute("/dashboard")({
   head: () => ({
@@ -30,35 +30,73 @@ export const Route = createFileRoute("/dashboard")({
 });
 
 function Dashboard() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const {
+    user,
+    streak,
+    currentDay,
+    totalDays,
+    daysCompleted,
+    projectsShipped,
+    rank,
+    progressPercent,
+    daysRemaining,
+    progress,
+    githubConnected,
+    todaySubmitted,
+  } = useAppState();
+
   return (
-    <div className="min-h-screen bg-background pb-24">
-      <main className="animate-fade-up mx-auto w-full max-w-lg px-4 pt-8 sm:px-6">
+    <AppShell>
+      <div className="animate-fade-up space-y-6">
         <header className="min-w-0">
-          <h1 className="text-2xl font-extrabold leading-tight tracking-tight">
-            Good evening, {USER_NAME} 👋
+          <h1 className="text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">
+            Keep building, {user.name}.
           </h1>
           <p className="mt-1.5 text-sm text-muted-foreground">
-            Day {CURRENT_DAY} of {TOTAL_DAYS} · {TRACK}
+            {todaySubmitted
+              ? `Day ${currentDay} is verified. Your streak is safe.`
+              : `You're on a ${streak}-day streak. One more day keeps the streak alive.`}
           </p>
         </header>
 
-        <div className="mt-6 space-y-6">
-          <StreakCard />
-          <ChallengeCard />
-          <ProgressCard />
-          <AchievementCard />
-          <StandingCard />
-          <JourneyGrid />
-          <Scratchpad />
-          <Link
-            to="/"
-            className="block pb-2 text-center text-xs font-semibold tracking-widest text-muted-foreground"
-          >
-            ABTALKS · BUILD IN PUBLIC
-          </Link>
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+          <MetricCard
+            label="CURRENT STREAK"
+            value={`${streak} days`}
+            icon={<Flame className="h-5 w-5 shrink-0 text-flame" aria-hidden="true" />}
+          />
+          <MetricCard label="DAYS COMPLETED" value={`${daysCompleted} / ${totalDays}`} hint={`${progressPercent}% complete`} />
+          <MetricCard label="PROJECTS SHIPPED" value={String(projectsShipped)} />
+          <MetricCard label="RANK" value={`#${rank}`} hint="Global leaderboard" />
         </div>
-      </main>
-      <BottomNav />
-    </div>
+
+        {!githubConnected && <GithubDisconnectedNotice />}
+
+        <div className="grid gap-6 xl:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
+          <TodayChallengeCard onSubmitProof={() => setModalOpen(true)} />
+          <div className="space-y-6">
+            <section className="card-surface p-5 sm:p-6">
+              <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
+                <h2 className="text-[11px] font-bold tracking-widest text-muted-foreground">
+                  YOUR 60-DAY RUN
+                </h2>
+                <p className="shrink-0 text-[11px] font-bold tracking-widest text-primary">
+                  {progressPercent}%
+                </p>
+              </div>
+              <div className="mt-4">
+                <DayGrid progress={progress} />
+              </div>
+              <p className="mt-4 border-t border-border pt-4 text-xs text-muted-foreground">
+                {daysCompleted} days completed · {daysRemaining} days remaining
+              </p>
+            </section>
+            <Scratchpad />
+          </div>
+        </div>
+      </div>
+      <SubmitProofModal open={modalOpen} onClose={() => setModalOpen(false)} />
+    </AppShell>
   );
 }
