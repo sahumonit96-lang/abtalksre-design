@@ -14,6 +14,7 @@ import { Route as ChallengeRouteImport } from './routes/challenge'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as ProgressRouteImport } from './routes/progress'
+import { Route as ProofRouteImport } from './routes/proof'
 import { Route as DayDayRouteImport } from './routes/day.$day'
 
 const IndexRoute = IndexRouteImport.update({
@@ -41,6 +42,11 @@ const ProgressRoute = ProgressRouteImport.update({
   path: '/progress',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProofRoute = ProofRouteImport.update({
+  id: '/proof',
+  path: '/proof',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DayDayRoute = DayDayRouteImport.update({
   id: '/day/$day',
   path: '/day/$day',
@@ -53,6 +59,7 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRoute
   '/profile': typeof ProfileRoute
   '/progress': typeof ProgressRoute
+  '/proof': typeof ProofRoute
   '/day/$day': typeof DayDayRoute
 }
 export interface FileRoutesByTo {
@@ -61,6 +68,7 @@ export interface FileRoutesByTo {
   '/dashboard': typeof DashboardRoute
   '/profile': typeof ProfileRoute
   '/progress': typeof ProgressRoute
+  '/proof': typeof ProofRoute
   '/day/$day': typeof DayDayRoute
 }
 export interface FileRoutesById {
@@ -70,14 +78,28 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRoute
   '/profile': typeof ProfileRoute
   '/progress': typeof ProgressRoute
+  '/proof': typeof ProofRoute
   '/day/$day': typeof DayDayRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/challenge' | '/dashboard' | '/profile' | '/progress' | '/day/$day'
+    | '/'
+    | '/challenge'
+    | '/dashboard'
+    | '/profile'
+    | '/progress'
+    | '/proof'
+    | '/day/$day'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/challenge' | '/dashboard' | '/profile' | '/progress' | '/day/$day'
+  to:
+    | '/'
+    | '/challenge'
+    | '/dashboard'
+    | '/profile'
+    | '/progress'
+    | '/proof'
+    | '/day/$day'
   id:
     | '__root__'
     | '/'
@@ -85,6 +107,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/profile'
     | '/progress'
+    | '/proof'
     | '/day/$day'
   fileRoutesById: FileRoutesById
 }
@@ -94,6 +117,7 @@ export interface RootRouteChildren {
   DashboardRoute: typeof DashboardRoute
   ProfileRoute: typeof ProfileRoute
   ProgressRoute: typeof ProgressRoute
+  ProofRoute: typeof ProofRoute
   DayDayRoute: typeof DayDayRoute
 }
 
@@ -134,6 +158,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgressRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/proof': {
+      id: '/proof'
+      path: '/proof'
+      fullPath: '/proof'
+      preLoaderRoute: typeof ProofRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/day/$day': {
       id: '/day/$day'
       path: '/day/$day'
@@ -150,6 +181,7 @@ const rootRouteChildren: RootRouteChildren = {
   DashboardRoute: DashboardRoute,
   ProfileRoute: ProfileRoute,
   ProgressRoute: ProgressRoute,
+  ProofRoute: ProofRoute,
   DayDayRoute: DayDayRoute,
 }
 export const routeTree = rootRouteImport
