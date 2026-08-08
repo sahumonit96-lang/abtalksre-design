@@ -137,7 +137,8 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
 
   const value = useMemo<AppStateValue>(() => {
     const todaySubmitted = state.proofs.some((p) => p.day === state.currentDay);
-    const daysCompleted = todaySubmitted ? state.currentDay : state.currentDay - 1;
+    // Day 12 of the run means 12 days on the board (20% of 60).
+    const daysCompleted = state.currentDay;
     const progress = buildProgress(state.currentDay).map((d) =>
       todaySubmitted && d.day === state.currentDay ? { ...d, status: "completed" as const } : d,
     );
