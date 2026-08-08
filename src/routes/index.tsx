@@ -85,15 +85,13 @@ function Landing() {
                 60-DAY CODING CHALLENGE · BUILD IN PUBLIC
               </p>
               <h1 className="mt-5 text-[2.6rem] font-extrabold leading-[1.05] tracking-tight sm:text-6xl">
-                Build
+                Build every day.
                 <br />
-                <span className="text-primary">every day.</span>
+                <span className="text-primary">Prove your progress.</span>
               </h1>
               <p className="mt-5 max-w-md text-base text-muted-foreground sm:text-lg">
-                Turn 60 days of consistent building into real proof of work.
-              </p>
-              <p className="mt-3 max-w-md text-sm text-muted-foreground/90">
-                Build daily. Ship to GitHub. Share your progress on LinkedIn.
+                Turn 60 days of consistent building into verifiable proof of work, a public
+                portfolio, and a reputation that compounds.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link
