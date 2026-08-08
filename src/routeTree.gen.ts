@@ -19,6 +19,7 @@ import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as ProgressRouteImport } from './routes/progress'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as ProofRouteImport } from './routes/proof'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as DayDayRouteImport } from './routes/day.$day'
 
 const IndexRoute = IndexRouteImport.update({
@@ -71,6 +72,11 @@ const ProofRoute = ProofRouteImport.update({
   path: '/proof',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DayDayRoute = DayDayRouteImport.update({
   id: '/day/$day',
   path: '/day/$day',
@@ -88,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/progress': typeof ProgressRoute
   '/projects': typeof ProjectsRoute
   '/proof': typeof ProofRoute
+  '/settings': typeof SettingsRoute
   '/day/$day': typeof DayDayRoute
 }
 export interface FileRoutesByTo {
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/progress': typeof ProgressRoute
   '/projects': typeof ProjectsRoute
   '/proof': typeof ProofRoute
+  '/settings': typeof SettingsRoute
   '/day/$day': typeof DayDayRoute
 }
 export interface FileRoutesById {
@@ -115,6 +123,7 @@ export interface FileRoutesById {
   '/progress': typeof ProgressRoute
   '/projects': typeof ProjectsRoute
   '/proof': typeof ProofRoute
+  '/settings': typeof SettingsRoute
   '/day/$day': typeof DayDayRoute
 }
 export interface FileRouteTypes {
@@ -130,6 +139,7 @@ export interface FileRouteTypes {
     | '/progress'
     | '/projects'
     | '/proof'
+    | '/settings'
     | '/day/$day'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -143,6 +153,7 @@ export interface FileRouteTypes {
     | '/progress'
     | '/projects'
     | '/proof'
+    | '/settings'
     | '/day/$day'
   id:
     | '__root__'
@@ -156,6 +167,7 @@ export interface FileRouteTypes {
     | '/progress'
     | '/projects'
     | '/proof'
+    | '/settings'
     | '/day/$day'
   fileRoutesById: FileRoutesById
 }
@@ -170,6 +182,7 @@ export interface RootRouteChildren {
   ProgressRoute: typeof ProgressRoute
   ProjectsRoute: typeof ProjectsRoute
   ProofRoute: typeof ProofRoute
+  SettingsRoute: typeof SettingsRoute
   DayDayRoute: typeof DayDayRoute
 }
 
@@ -245,6 +258,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProofRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/day/$day': {
       id: '/day/$day'
       path: '/day/$day'
@@ -266,6 +286,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProgressRoute: ProgressRoute,
   ProjectsRoute: ProjectsRoute,
   ProofRoute: ProofRoute,
+  SettingsRoute: SettingsRoute,
   DayDayRoute: DayDayRoute,
 }
 export const routeTree = rootRouteImport
