@@ -123,8 +123,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
         proofs: [proof, ...prev.proofs],
         streak: prev.streak + 1,
         projectsShipped: proof.kind === "project" ? prev.projectsShipped + 1 : prev.projectsShipped,
-        checklist: prev.challengeChecklistReset ? [] : prev.checklist,
-      } as PersistedState;
+      };
     });
   }, []);
 
@@ -138,7 +137,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
 
   const value = useMemo<AppStateValue>(() => {
     const todaySubmitted = state.proofs.some((p) => p.day === state.currentDay);
-    const daysCompleted = todaySubmitted ? state.currentDay : state.currentDay - 1 + 1;
+    const daysCompleted = todaySubmitted ? state.currentDay : state.currentDay - 1;
     const progress = buildProgress(state.currentDay).map((d) =>
       todaySubmitted && d.day === state.currentDay ? { ...d, status: "completed" as const } : d,
     );
