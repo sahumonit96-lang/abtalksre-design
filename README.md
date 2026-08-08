@@ -1,936 +1,151 @@
-# Daily Build Streak
+ABTalks 🚀
 
-Build a complete, polished, mobile-first React website for the ABTalks 60-Day Coding Challenge hackathon.
+Build every day. Prove your progress.
 
-IMPORTANT:
+ABTalks is a 60-Day Build in Public Challenge designed for college builders. It turns consistent coding and shipping into visible, verifiable, and shareable proof of work.
 
-Do not create a generic landing page.
+🎯 The Problem
 
-Create a complete working frontend prototype with 3 routes:
+Students build projects but often struggle to show consistent progress, maintain momentum, and turn their work into a credible public portfolio.
 
-/
+ABTalks solves this with a simple loop:
 
-/dashboard
+Challenge → Build → Verify → Proof → Streak → Share → Build Again
 
-/day/12
+✨ Features
 
-The design should feel like a premium startup/productivity platform for college developers.
+60-Day Coding Challenge — Build and ship consistently.
 
-==================================================
+Daily Challenges — A focused task for every day.
 
-BRAND / VISUAL STYLE
+Proof of Work — Record what you built and link your GitHub/deployment.
 
-==================================================
+Verification Flow — Demo-ready GitHub and deployment verification.
 
-Brand: ABTalks
+Streaks — Track consistent building.
 
-Theme:
+Proof Cards — Turn completed work into shareable proof.
 
-- Premium dark UI
+Builder Community — Discover other college builders.
 
-- Near-black background
+Build in Public Feed — Share progress and project updates.
 
-- Lavender/purple primary accent
+Leaderboard — Compare verified building consistency.
 
-- White primary text
+Public Profiles — Showcase projects, streaks, and proof.
 
-- Muted gray secondary text
+Achievements — Earn milestones for consistent building.
 
-- Subtle borders
+Responsive UI — Designed for mobile, tablet, and desktop.
 
-- Rounded cards
+🧭 Demo Flow
 
-- Minimal gradients
+The main hackathon demo flow is:
 
-- Soft glow effects
+Landing
+   ↓
+Start Challenge
+   ↓
+Dashboard
+   ↓
+Today's Challenge
+   ↓
+Submit Proof
+   ↓
+Verification
+   ↓
+Streak Increases
+   ↓
+Proof Card
+   ↓
+Leaderboard
+   ↓
+Profile
+   ↓
+Builders Feed
 
-- Clean modern typography
+🛠️ Tech Stack
 
-- Developer/productivity aesthetic
+React
 
-Use Inter or Manrope.
+TypeScript
 
-Avoid:
+Vite
 
-- excessive gradients
+Modern component-based UI
 
-- excessive glassmorphism
+Responsive CSS
 
-- stock photos
+GitHub integration architecture
 
-- generic AI illustrations
+Vercel deployment
 
-- clutter
+🔐 Demo Mode
 
-- excessive animations
+The current hackathon version uses mock verification data so the complete product experience can be demonstrated without requiring external API credentials.
 
-Primary background:
+The GitHub verification layer is structured so it can later be replaced with real GitHub OAuth/API verification.
 
-#08080C
+🚀 Local Development
 
-Card background:
+Install dependencies:
 
-#111118
+npm install
 
-Elevated card:
+Start the development server:
 
-#171720
+npm run dev
 
-Accent:
+Build for production:
 
-#A78BFA
+npm run build
 
-Text:
+The production build is designed to deploy to Vercel from the GitHub main branch.
 
-#FFFFFF
+☁️ Deployment
 
-Muted text:
+Recommended deployment flow:
 
-#92929D
-
-==================================================
-
-CORE PRODUCT
-
-==================================================
-
-ABTalks is a 60-day coding challenge for college students.
-
-The experience should communicate:
-
-BUILD EVERY DAY
-
-→
-
-SHIP TO GITHUB
-
-→
-
-SHARE ON LINKEDIN
-
-→
-
-BUILD PROOF OF WORK
-
-→
-
-COMPLETE 60 DAYS
-
-Use realistic mock data.
-
-No backend required.
-
-No authentication.
-
-No database.
-
-No real GitHub API.
-
-No real LinkedIn API.
-
-Use React state and localStorage where useful.
-
-==================================================
-
-ROUTES
-
-==================================================
-
-Create:
-
-/
-
-Landing page
-
-/dashboard
-
-Student dashboard
-
-/day/12
-
-Today's challenge
-
-All routes must work on direct navigation.
-
-==================================================
-
-LANDING PAGE /
-
-==================================================
-
-Create a premium hero.
-
-Navbar:
-
-ABTalks
-
-"For college builders"
-
-Hero label:
-
-60-DAY CODING CHALLENGE · BUILD IN PUBLIC
-
-Headline:
-
-Build
-
-every day.
-
-Supporting text:
-
-Turn 60 days of consistent building into real proof of work.
-
-Additional explanation:
-
-Build daily. Ship to GitHub. Share your progress on LinkedIn.
-
-Primary button:
-
-Start the challenge →
-
-Navigate to:
-
-/dashboard
-
-Secondary button:
-
-See how it works
-
-Smooth scroll to the How It Works section.
-
-==================================================
-
-60-DAY VISUAL
-
-==================================================
-
-Place a premium challenge progress card beside the hero on desktop.
-
-On mobile place it below the CTA.
-
-Card:
-
-YOUR 60-DAY RUN
-
-DAY 12 / 60
-
-20% COMPLETE
-
-🔥 11 DAY STREAK
-
-Show a beautiful 60-day grid/dot visualization.
-
-Completed days:
-
-✓
-
-Current day:
-
-highlighted
-
-Upcoming:
-
-muted
-
-Do not make it look like a generic dashboard.
-
-==================================================
-
-HOW IT WORKS
-
-==================================================
-
-Create four minimal cards:
-
-01
-
-PICK A TRACK
-
-02
-
-BUILD DAILY
-
-03
-
-SUBMIT PROOF
-
-04
-
-COMPLETE 60 DAYS
-
-==================================================
-
-WHY ABTALKS
-
-==================================================
-
-Create three cards:
-
-CONSISTENCY
-
-Build the habit.
-
-PORTFOLIO
-
-Create real proof of your skills.
-
-VISIBILITY
-
-Share your progress publicly.
-
-==================================================
-
-FINAL CTA
-
-==================================================
-
-Your next 60 days can look different.
-
-[ Start building → ]
-
-==================================================
-
-DASHBOARD /dashboard
-
-==================================================
-
-This should be the strongest product screen.
-
-Header:
-
-Good evening, Monit 👋
-
-Day 12 of 60 · Web Development
-
-Do not truncate the name on mobile.
-
-==================================================
-
-STREAK CARD
-
-==================================================
-
-Large card:
-
-🔥
-
-11
-
-DAY STREAK
-
-You're building momentum.
-
-Weekly visualization:
-
-M T W T F S S
-
-✓ ✓ ✓ ✓ ✓ ✓ •
-
-==================================================
-
-TODAY'S CHALLENGE
-
-==================================================
-
-Place this immediately after the streak.
-
-Card:
-
-TODAY'S CHALLENGE
-
-DAY 12
-
-Build a Responsive Landing Page
-
-45 min · Web Development
-
-IN PROGRESS
-
-[ Continue Challenge → ]
-
-The entire card should be clickable.
-
-Navigate to:
-
-/day/12
-
-==================================================
-
-JOURNEY PROGRESS
-
-==================================================
-
-Show:
-
-12 / 60
-
-20%
-
-48 days remaining
-
-Use a polished progress bar.
-
-==================================================
-
-ACHIEVEMENTS
-
-==================================================
-
-Show:
-
-✓ First Commit
-
-🔥 7 Day Streak
-
-💻 First Project
-
-🔒 30 Day Streak
-
-==================================================
-
-STANDING
-
-==================================================
-
-YOUR STANDING
-
-Gold
-
-Top 1% of active builders
-
-Consistency is your advantage.
-
-Do not make competition the main focus.
-
-==================================================
-
-60-DAY JOURNEY
-
-==================================================
-
-Title:
-
-YOUR 60-DAY JOURNEY
-
-Show days 1–60.
-
-States:
-
-Completed = checkmark
-
-Today = highlighted
-
-Upcoming = muted
-
-Missed = recovery state
-
-Include a small legend.
-
-Make it responsive at 390px.
-
-==================================================
-
-SCRATCHPAD
-
-==================================================
-
-DEVELOPER SCRATCHPAD
-
-Textarea:
-
-What did you build today?
-
-Character counter:
-
-0 / 500
-
-Button:
-
-Save Note
-
-After saving:
-
-✓ Saved locally
-
-Persist the note with localStorage.
-
-==================================================
-
-BOTTOM NAVIGATION
-
-==================================================
-
-Mobile bottom navigation:
-
-HOME
-
-PROGRESS
-
-PROFILE
-
-Fixed navigation.
-
-Make sure it never covers content.
-
-Add enough bottom padding.
-
-==================================================
-
-CHALLENGE DAY /day/12
-
-==================================================
-
-Header:
-
-← Back
-
-CHALLENGE
-
-DAY 12 / 60
-
-==================================================
-
-TITLE
-
-==================================================
-
-Build a Responsive Landing Page
-
-45 MIN · WEB DEVELOPMENT · INTERMEDIATE
-
-==================================================
-
-TODAY'S GOAL
-
-==================================================
-
-Build a responsive landing page from scratch with clear navigation, a strong hero section, a primary CTA, and a mobile-friendly layout.
-
-==================================================
-
-CHECKLIST
-
-==================================================
-
-WHAT TO BUILD
-
-0/5
-
-□ Navigation
-
-Create a clear path through the page.
-
-□ Hero section
-
-Create a strong visual introduction.
-
-□ Primary CTA
-
-Add a clear call-to-action.
-
-□ Responsive layout
-
-Make the experience work across screen sizes.
-
-□ Footer
-
-Finish the page with useful links.
-
-Every checkbox must be interactive.
-
-When checked:
-
-1/5
-
-2/5
-
-3/5
-
-4/5
-
-5/5
-
-Use subtle checkbox animations.
-
-When all are completed:
-
-All requirements complete 🎉
-
-==================================================
-
-PROOF OF WORK
-
-==================================================
-
-After the checklist create:
-
-PROOF OF WORK
-
+Lovable
+   ↓
 GitHub
+   ↓
+Vercel
+   ↓
+Production
 
-Paste your repository or commit URL
+The repository is connected to Vercel for production deployment.
 
-[input]
-
-LinkedIn
-
-Paste your LinkedIn post URL
-
-[input]
-
-[ Submit Today's Proof → ]
-
-==================================================
-
-VALIDATION
-
-==================================================
-
-Do not use browser alert().
-
-Only show errors after user interaction/submission.
-
-GitHub must accept URLs beginning with:
-
-https://github.com/
-
-LinkedIn must accept:
-
-https://linkedin.com/
-
-or:
-
-https://www.linkedin.com/
-
-Show inline errors:
-
-Enter a valid GitHub URL.
-
-Enter a valid LinkedIn post URL.
-
-Inputs must fit perfectly at 390px.
-
-==================================================
-
-SUCCESS STATE
-
-==================================================
-
-After valid submission:
-
-✓ DAY 12 COMPLETE
-
-Another day shipped.
-
-🔥 Streak updated to 12 days
-
-12 / 60 challenges complete
-
-[ Back to Dashboard → ]
-
-Navigate to:
-
-/dashboard
-
-Add a subtle success animation.
-
-==================================================
-
-RECOVERY MODE
-
-==================================================
-
-Create a reusable missed-day state:
-
-MISSED YESTERDAY?
-
-No worries. Your 60-day journey is still here.
-
-You completed 11 days.
-
-Let's keep building.
-
-[ Continue Day 12 → ]
-
-Avoid negative wording.
-
-==================================================
-
-FIRST DAY STATE
-
-==================================================
-
-YOUR FIRST DAY
-
-Every streak starts with one.
-
-0 / 60 challenges complete
-
-[ Start Day 1 → ]
-
-==================================================
-
-EMPTY PROFILE
-
-==================================================
-
-NO PROJECTS YET
-
-Your builds will appear here as you complete challenges.
-
-[ Start Building → ]
-
-==================================================
-
-RESPONSIVE DESIGN
-
-==================================================
-
-The most important viewport is:
-
-390px wide
-
-Test all 3 routes at 390px.
-
-There must be:
-
-NO horizontal scrolling
-
-NO clipped text
-
-NO overflowing cards
-
-NO buttons outside viewport
-
-NO input overflow
-
-NO bottom navigation overlap
-
-Do not simply solve problems using:
-
-overflow-x: hidden
-
-Fix the actual layout.
-
-Use:
-
-box-sizing: border-box
-
-Responsive CSS.
-
-==================================================
-
-ACCESSIBILITY
-
-==================================================
-
-Use:
-
-- semantic HTML
-
-- labels for inputs
-
-- accessible buttons
-
-- keyboard focus states
-
-- good contrast
-
-- comfortable touch targets
-
-==================================================
-
-META
-
-==================================================
-
-Set browser title to:
-
-ABTalks — 60-Day Coding Challenge
-
-Do not use:
-
-Create Next App
-
-Do not use default Vite title.
-
-==================================================
-
-COMPONENT STRUCTURE
-
-==================================================
-
-Keep the code modular.
-
-Suggested structure:
+📁 Project Structure
 
 src/
+├── components/
+├── pages/
+├── services/
+├── data/
+├── types/
+└── ...
 
-  components/
+The exact structure may evolve as the project grows.
 
-    Navbar.jsx
+🏆 Hackathon Focus
 
-    BottomNav.jsx
+ABTalks is built around one principle:
 
-    StreakCard.jsx
+Make consistent building visible, verifiable, shareable, and rewarding.
 
-    ChallengeCard.jsx
+Instead of simply asking students to "code every day," ABTalks creates a system where daily work becomes evidence of skill and progress.
 
-    ProgressCard.jsx
+🤖 AI-Assisted Development
 
-    AchievementCard.jsx
+AI/vibe-coding tools were used during development for product ideation, UI implementation, component structure, responsive design, mock data, user flows, and deployment preparation.
 
-    JourneyGrid.jsx
+The complete AI usage/prompt log is available in:
 
-    Scratchpad.jsx
+PROMPTS.md
 
-    Checklist.jsx
+👥 Project
 
-    ProofForm.jsx
+ABTalks — 60-Day Build in Public Challenge
 
-  pages/
-
-    Landing.jsx
-
-    Dashboard.jsx
-
-    ChallengeDay.jsx
-
-  data/
-
-    mockData.js
-
-  App.jsx
-
-  main.jsx
-
-  index.css
-
-Do not put the entire website into one huge component.
-
-==================================================
-
-ANIMATIONS
-
-==================================================
-
-Use subtle animations only:
-
-- fade/slide page transitions
-
-- checkbox completion animation
-
-- progress animation
-
-- button hover/tap feedback
-
-- success animation
-
-- smooth scroll
-
-Keep animations fast and professional.
-
-Respect prefers-reduced-motion.
-
-==================================================
-
-FINAL QA
-
-==================================================
-
-Before finishing:
-
-Run the project.
-
-Test:
-
-/
-
- /dashboard
-
- /day/12
-
-Test navigation.
-
-Test:
-
-- Start challenge
-
-- See how it works
-
-- Continue challenge
-
-- checklist
-
-- GitHub validation
-
-- LinkedIn validation
-
-- proof submission
-
-- success state
-
-- Back to Dashboard
-
-- Scratchpad save
-
-Then test at exactly 390px.
-
-Fix every:
-
-- overflow
-
-- clipping
-
-- spacing problem
-
-- navigation issue
-
-- broken button
-
-- broken route
-
-- unreadable text
-
-The final result should look like a polished hackathon-winning product, not a basic AI-generated template.
-
-Do not add unnecessary features.
-
-Prioritize:
-
-UI/UX
-
-mobile usability
-
-visual hierarchy
-
-daily challenge flow
-
-proof of work
-
-streak
-
-60-day progress
-
-Build the complete working frontend now.
-
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/c4ec4813-8870-42d6-8ab6-c693755b0fa3).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+Built for a hackathon with a focus on helping college builders consistently ship and prove their work.
