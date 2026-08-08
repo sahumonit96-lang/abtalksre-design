@@ -14,6 +14,7 @@ import { Route as BuildersRouteImport } from './routes/builders'
 import { Route as ChallengeRouteImport } from './routes/challenge'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as FeedRouteImport } from './routes/feed'
+import { Route as LeaderboardRouteImport } from './routes/leaderboard'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as ProgressRouteImport } from './routes/progress'
 import { Route as ProofRouteImport } from './routes/proof'
@@ -44,6 +45,11 @@ const FeedRoute = FeedRouteImport.update({
   path: '/feed',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LeaderboardRoute = LeaderboardRouteImport.update({
+  id: '/leaderboard',
+  path: '/leaderboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
@@ -71,6 +77,7 @@ export interface FileRoutesByFullPath {
   '/challenge': typeof ChallengeRoute
   '/dashboard': typeof DashboardRoute
   '/feed': typeof FeedRoute
+  '/leaderboard': typeof LeaderboardRoute
   '/profile': typeof ProfileRoute
   '/progress': typeof ProgressRoute
   '/proof': typeof ProofRoute
@@ -82,6 +89,7 @@ export interface FileRoutesByTo {
   '/challenge': typeof ChallengeRoute
   '/dashboard': typeof DashboardRoute
   '/feed': typeof FeedRoute
+  '/leaderboard': typeof LeaderboardRoute
   '/profile': typeof ProfileRoute
   '/progress': typeof ProgressRoute
   '/proof': typeof ProofRoute
@@ -94,6 +102,7 @@ export interface FileRoutesById {
   '/challenge': typeof ChallengeRoute
   '/dashboard': typeof DashboardRoute
   '/feed': typeof FeedRoute
+  '/leaderboard': typeof LeaderboardRoute
   '/profile': typeof ProfileRoute
   '/progress': typeof ProgressRoute
   '/proof': typeof ProofRoute
@@ -107,6 +116,7 @@ export interface FileRouteTypes {
     | '/challenge'
     | '/dashboard'
     | '/feed'
+    | '/leaderboard'
     | '/profile'
     | '/progress'
     | '/proof'
@@ -118,6 +128,7 @@ export interface FileRouteTypes {
     | '/challenge'
     | '/dashboard'
     | '/feed'
+    | '/leaderboard'
     | '/profile'
     | '/progress'
     | '/proof'
@@ -129,6 +140,7 @@ export interface FileRouteTypes {
     | '/challenge'
     | '/dashboard'
     | '/feed'
+    | '/leaderboard'
     | '/profile'
     | '/progress'
     | '/proof'
@@ -141,6 +153,7 @@ export interface RootRouteChildren {
   ChallengeRoute: typeof ChallengeRoute
   DashboardRoute: typeof DashboardRoute
   FeedRoute: typeof FeedRoute
+  LeaderboardRoute: typeof LeaderboardRoute
   ProfileRoute: typeof ProfileRoute
   ProgressRoute: typeof ProgressRoute
   ProofRoute: typeof ProofRoute
@@ -184,6 +197,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FeedRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/leaderboard': {
+      id: '/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/leaderboard'
+      preLoaderRoute: typeof LeaderboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/profile': {
       id: '/profile'
       path: '/profile'
@@ -221,6 +241,7 @@ const rootRouteChildren: RootRouteChildren = {
   ChallengeRoute: ChallengeRoute,
   DashboardRoute: DashboardRoute,
   FeedRoute: FeedRoute,
+  LeaderboardRoute: LeaderboardRoute,
   ProfileRoute: ProfileRoute,
   ProgressRoute: ProgressRoute,
   ProofRoute: ProofRoute,
