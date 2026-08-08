@@ -10,9 +10,16 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BuildersRouteImport } from './routes/builders'
+import { Route as ChallengeRouteImport } from './routes/challenge'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as FeedRouteImport } from './routes/feed'
+import { Route as LeaderboardRouteImport } from './routes/leaderboard'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as ProgressRouteImport } from './routes/progress'
+import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as ProofRouteImport } from './routes/proof'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as DayDayRouteImport } from './routes/day.$day'
 
 const IndexRoute = IndexRouteImport.update({
@@ -20,9 +27,29 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BuildersRoute = BuildersRouteImport.update({
+  id: '/builders',
+  path: '/builders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChallengeRoute = ChallengeRouteImport.update({
+  id: '/challenge',
+  path: '/challenge',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeedRoute = FeedRouteImport.update({
+  id: '/feed',
+  path: '/feed',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeaderboardRoute = LeaderboardRouteImport.update({
+  id: '/leaderboard',
+  path: '/leaderboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProfileRoute = ProfileRouteImport.update({
@@ -35,6 +62,21 @@ const ProgressRoute = ProgressRouteImport.update({
   path: '/progress',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProofRoute = ProofRouteImport.update({
+  id: '/proof',
+  path: '/proof',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DayDayRoute = DayDayRouteImport.update({
   id: '/day/$day',
   path: '/day/$day',
@@ -43,39 +85,104 @@ const DayDayRoute = DayDayRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/builders': typeof BuildersRoute
+  '/challenge': typeof ChallengeRoute
   '/dashboard': typeof DashboardRoute
+  '/feed': typeof FeedRoute
+  '/leaderboard': typeof LeaderboardRoute
   '/profile': typeof ProfileRoute
   '/progress': typeof ProgressRoute
+  '/projects': typeof ProjectsRoute
+  '/proof': typeof ProofRoute
+  '/settings': typeof SettingsRoute
   '/day/$day': typeof DayDayRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/builders': typeof BuildersRoute
+  '/challenge': typeof ChallengeRoute
   '/dashboard': typeof DashboardRoute
+  '/feed': typeof FeedRoute
+  '/leaderboard': typeof LeaderboardRoute
   '/profile': typeof ProfileRoute
   '/progress': typeof ProgressRoute
+  '/projects': typeof ProjectsRoute
+  '/proof': typeof ProofRoute
+  '/settings': typeof SettingsRoute
   '/day/$day': typeof DayDayRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/builders': typeof BuildersRoute
+  '/challenge': typeof ChallengeRoute
   '/dashboard': typeof DashboardRoute
+  '/feed': typeof FeedRoute
+  '/leaderboard': typeof LeaderboardRoute
   '/profile': typeof ProfileRoute
   '/progress': typeof ProgressRoute
+  '/projects': typeof ProjectsRoute
+  '/proof': typeof ProofRoute
+  '/settings': typeof SettingsRoute
   '/day/$day': typeof DayDayRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard' | '/profile' | '/progress' | '/day/$day'
+  fullPaths:
+    | '/'
+    | '/builders'
+    | '/challenge'
+    | '/dashboard'
+    | '/feed'
+    | '/leaderboard'
+    | '/profile'
+    | '/progress'
+    | '/projects'
+    | '/proof'
+    | '/settings'
+    | '/day/$day'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/profile' | '/progress' | '/day/$day'
-  id: '__root__' | '/' | '/dashboard' | '/profile' | '/progress' | '/day/$day'
+  to:
+    | '/'
+    | '/builders'
+    | '/challenge'
+    | '/dashboard'
+    | '/feed'
+    | '/leaderboard'
+    | '/profile'
+    | '/progress'
+    | '/projects'
+    | '/proof'
+    | '/settings'
+    | '/day/$day'
+  id:
+    | '__root__'
+    | '/'
+    | '/builders'
+    | '/challenge'
+    | '/dashboard'
+    | '/feed'
+    | '/leaderboard'
+    | '/profile'
+    | '/progress'
+    | '/projects'
+    | '/proof'
+    | '/settings'
+    | '/day/$day'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BuildersRoute: typeof BuildersRoute
+  ChallengeRoute: typeof ChallengeRoute
   DashboardRoute: typeof DashboardRoute
+  FeedRoute: typeof FeedRoute
+  LeaderboardRoute: typeof LeaderboardRoute
   ProfileRoute: typeof ProfileRoute
   ProgressRoute: typeof ProgressRoute
+  ProjectsRoute: typeof ProjectsRoute
+  ProofRoute: typeof ProofRoute
+  SettingsRoute: typeof SettingsRoute
   DayDayRoute: typeof DayDayRoute
 }
 
@@ -88,11 +195,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/builders': {
+      id: '/builders'
+      path: '/builders'
+      fullPath: '/builders'
+      preLoaderRoute: typeof BuildersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/challenge': {
+      id: '/challenge'
+      path: '/challenge'
+      fullPath: '/challenge'
+      preLoaderRoute: typeof ChallengeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard': {
       id: '/dashboard'
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/feed': {
+      id: '/feed'
+      path: '/feed'
+      fullPath: '/feed'
+      preLoaderRoute: typeof FeedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leaderboard': {
+      id: '/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/leaderboard'
+      preLoaderRoute: typeof LeaderboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/profile': {
@@ -109,6 +244,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgressRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/proof': {
+      id: '/proof'
+      path: '/proof'
+      fullPath: '/proof'
+      preLoaderRoute: typeof ProofRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/day/$day': {
       id: '/day/$day'
       path: '/day/$day'
@@ -121,9 +277,16 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BuildersRoute: BuildersRoute,
+  ChallengeRoute: ChallengeRoute,
   DashboardRoute: DashboardRoute,
+  FeedRoute: FeedRoute,
+  LeaderboardRoute: LeaderboardRoute,
   ProfileRoute: ProfileRoute,
   ProgressRoute: ProgressRoute,
+  ProjectsRoute: ProjectsRoute,
+  ProofRoute: ProofRoute,
+  SettingsRoute: SettingsRoute,
   DayDayRoute: DayDayRoute,
 }
 export const routeTree = rootRouteImport
