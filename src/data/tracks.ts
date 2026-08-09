@@ -500,7 +500,7 @@ const resourcesFor = (track: Track) => [
 export function getChallenge(trackId: TrackId, day: number): TrackChallenge {
   const track = trackById(trackId);
   const list = briefs[trackId];
-  const brief = list[(day - 1) % list.length];
+  const brief = list[(day - 1) % list.length]!;
   const round = Math.floor((day - 1) / list.length);
 
   return {
