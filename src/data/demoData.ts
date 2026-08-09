@@ -186,6 +186,7 @@ export const builders: Builder[] = [
     streak: 47,
     daysCompleted: 47,
     projectsShipped: 23,
+    xp: 5850,
   },
   {
     id: "b-2",
@@ -196,6 +197,7 @@ export const builders: Builder[] = [
     streak: 43,
     daysCompleted: 43,
     projectsShipped: 19,
+    xp: 5250,
   },
   {
     id: "b-3",
@@ -206,6 +208,7 @@ export const builders: Builder[] = [
     streak: 39,
     daysCompleted: 39,
     projectsShipped: 17,
+    xp: 4750,
   },
   {
     id: "b-4",
@@ -216,6 +219,7 @@ export const builders: Builder[] = [
     streak: 34,
     daysCompleted: 36,
     projectsShipped: 15,
+    xp: 4350,
   },
   {
     id: "b-5",
@@ -226,6 +230,7 @@ export const builders: Builder[] = [
     streak: 32,
     daysCompleted: 32,
     projectsShipped: 14,
+    xp: 3900,
   },
   {
     id: "b-6",
@@ -236,6 +241,7 @@ export const builders: Builder[] = [
     streak: 28,
     daysCompleted: 30,
     projectsShipped: 12,
+    xp: 3600,
   },
   {
     id: "b-7",
@@ -246,6 +252,7 @@ export const builders: Builder[] = [
     streak: 24,
     daysCompleted: 25,
     projectsShipped: 11,
+    xp: 3050,
   },
   {
     id: "b-8",
@@ -256,6 +263,7 @@ export const builders: Builder[] = [
     streak: 21,
     daysCompleted: 23,
     projectsShipped: 9,
+    xp: 2750,
   },
   {
     id: "b-9",
@@ -266,6 +274,7 @@ export const builders: Builder[] = [
     streak: 18,
     daysCompleted: 20,
     projectsShipped: 8,
+    xp: 2400,
   },
   {
     id: "b-10",
@@ -276,6 +285,7 @@ export const builders: Builder[] = [
     streak: 16,
     daysCompleted: 18,
     projectsShipped: 8,
+    xp: 2200,
   },
   {
     id: "b-11",
@@ -286,6 +296,7 @@ export const builders: Builder[] = [
     streak: 14,
     daysCompleted: 16,
     projectsShipped: 7,
+    xp: 1950,
   },
 ];
 
@@ -374,6 +385,7 @@ export function buildLeaderboard(user: {
   streak: number;
   daysCompleted: number;
   projects: number;
+  xp: number;
 }): LeaderboardEntry[] {
   const rows: LeaderboardEntry[] = builders.slice(0, 10).map((b, i) => ({
     rank: i + 1,
@@ -384,6 +396,7 @@ export function buildLeaderboard(user: {
     streak: b.streak,
     daysCompleted: b.daysCompleted,
     projects: b.projectsShipped,
+    xp: b.xp,
   }));
 
   rows.push({
@@ -395,6 +408,7 @@ export function buildLeaderboard(user: {
     streak: user.streak,
     daysCompleted: user.daysCompleted,
     projects: user.projects,
+    xp: user.xp,
     isCurrentUser: true,
   });
 
