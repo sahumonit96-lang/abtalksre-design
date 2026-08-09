@@ -186,6 +186,7 @@ export const builders: Builder[] = [
     streak: 47,
     daysCompleted: 47,
     projectsShipped: 23,
+    xp: 5850,
   },
   {
     id: "b-2",
@@ -196,6 +197,7 @@ export const builders: Builder[] = [
     streak: 43,
     daysCompleted: 43,
     projectsShipped: 19,
+    xp: 5250,
   },
   {
     id: "b-3",
@@ -206,6 +208,7 @@ export const builders: Builder[] = [
     streak: 39,
     daysCompleted: 39,
     projectsShipped: 17,
+    xp: 4750,
   },
   {
     id: "b-4",
@@ -216,6 +219,7 @@ export const builders: Builder[] = [
     streak: 34,
     daysCompleted: 36,
     projectsShipped: 15,
+    xp: 4350,
   },
   {
     id: "b-5",
@@ -226,6 +230,7 @@ export const builders: Builder[] = [
     streak: 32,
     daysCompleted: 32,
     projectsShipped: 14,
+    xp: 3900,
   },
   {
     id: "b-6",
@@ -236,6 +241,7 @@ export const builders: Builder[] = [
     streak: 28,
     daysCompleted: 30,
     projectsShipped: 12,
+    xp: 3600,
   },
   {
     id: "b-7",
@@ -246,6 +252,7 @@ export const builders: Builder[] = [
     streak: 24,
     daysCompleted: 25,
     projectsShipped: 11,
+    xp: 3050,
   },
   {
     id: "b-8",
@@ -256,6 +263,7 @@ export const builders: Builder[] = [
     streak: 21,
     daysCompleted: 23,
     projectsShipped: 9,
+    xp: 2750,
   },
   {
     id: "b-9",
@@ -266,6 +274,7 @@ export const builders: Builder[] = [
     streak: 18,
     daysCompleted: 20,
     projectsShipped: 8,
+    xp: 2400,
   },
   {
     id: "b-10",
@@ -276,6 +285,7 @@ export const builders: Builder[] = [
     streak: 16,
     daysCompleted: 18,
     projectsShipped: 8,
+    xp: 2200,
   },
   {
     id: "b-11",
@@ -286,6 +296,7 @@ export const builders: Builder[] = [
     streak: 14,
     daysCompleted: 16,
     projectsShipped: 7,
+    xp: 1950,
   },
 ];
 
@@ -374,6 +385,7 @@ export function buildLeaderboard(user: {
   streak: number;
   daysCompleted: number;
   projects: number;
+  xp: number;
 }): LeaderboardEntry[] {
   const rows: LeaderboardEntry[] = builders.slice(0, 10).map((b, i) => ({
     rank: i + 1,
@@ -384,6 +396,7 @@ export function buildLeaderboard(user: {
     streak: b.streak,
     daysCompleted: b.daysCompleted,
     projects: b.projectsShipped,
+    xp: b.xp,
   }));
 
   rows.push({
@@ -395,53 +408,66 @@ export function buildLeaderboard(user: {
     streak: user.streak,
     daysCompleted: user.daysCompleted,
     projects: user.projects,
+    xp: user.xp,
     isCurrentUser: true,
   });
 
   return rows;
 }
 
-export function buildAchievements(streak: number, projects: number, rank: number): Achievement[] {
+export function buildAchievements(
+  streak: number,
+  projects: number,
+  rank: number,
+  daysCompleted = 0,
+): Achievement[] {
   return [
     {
-      id: "a-first-commit",
-      icon: "💻",
-      title: "First GitHub Verification",
-      detail: "Day 1 verified",
-      unlocked: true,
+      id: "a-first-build",
+      icon: "🏗️",
+      title: "First Build",
+      detail: daysCompleted >= 1 ? "Day 1 submitted" : "Submit your first proof",
+      unlocked: daysCompleted >= 1,
     },
     {
       id: "a-first-project",
       icon: "🚀",
       title: "First Project Shipped",
-      detail: `${projects} shipped so far`,
+      detail: projects >= 1 ? `${projects} shipped so far` : "Ship a project",
       unlocked: projects >= 1,
     },
     {
-      id: "a-first-proof",
-      icon: "🌎",
-      title: "First Public Proof",
-      detail: "Shared publicly",
-      unlocked: true,
+      id: "a-7",
+      icon: "🔥",
+      title: "7-Day Streak",
+      detail: streak >= 7 ? "One week unbroken" : `${7 - streak} days to go`,
+      unlocked: streak >= 7,
     },
-    { id: "a-7", icon: "🔥", title: "7 Day Streak", detail: "One week", unlocked: streak >= 7 },
     {
       id: "a-14",
       icon: "🔥",
-      title: "14 Day Streak",
-      detail: streak >= 14 ? "Two weeks" : `${14 - streak} days to go`,
+      title: "14-Day Streak",
+      detail: streak >= 14 ? "Two weeks unbroken" : `${Math.max(0, 14 - streak)} days to go`,
       unlocked: streak >= 14,
     },
     {
       id: "a-30",
-      icon: "🔥",
-      title: "30 Day Streak",
-      detail: streak >= 30 ? "Halfway habit" : `${30 - streak} days to go`,
+      icon: "🏅",
+      title: "30-Day Builder",
+      detail: streak >= 30 ? "Halfway habit locked in" : `${Math.max(0, 30 - streak)} days to go`,
       unlocked: streak >= 30,
     },
     {
-      id: "a-top10",
+      id: "a-60",
       icon: "🏆",
+      title: "60-Day Finisher",
+      detail:
+        daysCompleted >= 60 ? "Full run complete" : `${Math.max(0, 60 - daysCompleted)} days left`,
+      unlocked: daysCompleted >= 60,
+    },
+    {
+      id: "a-top10",
+      icon: "👑",
       title: "Top 10 Builder",
       detail: rank <= 10 ? `Rank #${rank}` : `Currently #${rank}`,
       unlocked: rank <= 10,

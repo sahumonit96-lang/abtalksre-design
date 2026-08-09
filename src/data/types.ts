@@ -34,6 +34,37 @@ export interface Challenge {
   checklist: { id: string; label: string }[];
 }
 
+export type TrackId = "web" | "python" | "cpp" | "javascript" | "aiml";
+
+export interface Track {
+  id: TrackId;
+  name: string;
+  tagline: string;
+  icon: string;
+  skills: string[];
+}
+
+export interface TrackChallenge extends Challenge {
+  trackId: TrackId;
+  skills: string[];
+  problemStatement: string;
+  requirements: string[];
+  outcome: string;
+  resources: { label: string; url: string }[];
+  xp: number;
+}
+
+export type ActivityKind = "proof" | "challenge" | "streak" | "achievement" | "track";
+
+export interface ActivityItem {
+  id: string;
+  kind: ActivityKind;
+  title: string;
+  detail: string;
+  xp?: number;
+  at: string;
+}
+
 export interface DailyProgress {
   day: number;
   status: DayStatus;
@@ -79,6 +110,7 @@ export interface Builder {
   streak: number;
   daysCompleted: number;
   projectsShipped: number;
+  xp: number;
 }
 
 export interface Post {
@@ -112,5 +144,6 @@ export interface LeaderboardEntry {
   streak: number;
   daysCompleted: number;
   projects: number;
+  xp: number;
   isCurrentUser?: boolean;
 }
