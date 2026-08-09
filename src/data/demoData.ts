@@ -415,47 +415,59 @@ export function buildLeaderboard(user: {
   return rows;
 }
 
-export function buildAchievements(streak: number, projects: number, rank: number): Achievement[] {
+export function buildAchievements(
+  streak: number,
+  projects: number,
+  rank: number,
+  daysCompleted = 0,
+): Achievement[] {
   return [
     {
-      id: "a-first-commit",
-      icon: "💻",
-      title: "First GitHub Verification",
-      detail: "Day 1 verified",
-      unlocked: true,
+      id: "a-first-build",
+      icon: "🏗️",
+      title: "First Build",
+      detail: daysCompleted >= 1 ? "Day 1 submitted" : "Submit your first proof",
+      unlocked: daysCompleted >= 1,
     },
     {
       id: "a-first-project",
       icon: "🚀",
       title: "First Project Shipped",
-      detail: `${projects} shipped so far`,
+      detail: projects >= 1 ? `${projects} shipped so far` : "Ship a project",
       unlocked: projects >= 1,
     },
     {
-      id: "a-first-proof",
-      icon: "🌎",
-      title: "First Public Proof",
-      detail: "Shared publicly",
-      unlocked: true,
+      id: "a-7",
+      icon: "🔥",
+      title: "7-Day Streak",
+      detail: streak >= 7 ? "One week unbroken" : `${7 - streak} days to go`,
+      unlocked: streak >= 7,
     },
-    { id: "a-7", icon: "🔥", title: "7 Day Streak", detail: "One week", unlocked: streak >= 7 },
     {
       id: "a-14",
       icon: "🔥",
-      title: "14 Day Streak",
-      detail: streak >= 14 ? "Two weeks" : `${14 - streak} days to go`,
+      title: "14-Day Streak",
+      detail: streak >= 14 ? "Two weeks unbroken" : `${Math.max(0, 14 - streak)} days to go`,
       unlocked: streak >= 14,
     },
     {
       id: "a-30",
-      icon: "🔥",
-      title: "30 Day Streak",
-      detail: streak >= 30 ? "Halfway habit" : `${30 - streak} days to go`,
+      icon: "🏅",
+      title: "30-Day Builder",
+      detail: streak >= 30 ? "Halfway habit locked in" : `${Math.max(0, 30 - streak)} days to go`,
       unlocked: streak >= 30,
     },
     {
-      id: "a-top10",
+      id: "a-60",
       icon: "🏆",
+      title: "60-Day Finisher",
+      detail:
+        daysCompleted >= 60 ? "Full run complete" : `${Math.max(0, 60 - daysCompleted)} days left`,
+      unlocked: daysCompleted >= 60,
+    },
+    {
+      id: "a-top10",
+      icon: "👑",
       title: "Top 10 Builder",
       detail: rank <= 10 ? `Rank #${rank}` : `Currently #${rank}`,
       unlocked: rank <= 10,
