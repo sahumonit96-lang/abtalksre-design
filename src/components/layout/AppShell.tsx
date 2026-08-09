@@ -5,6 +5,8 @@ import {
   BarChart3,
   Flame,
   Home,
+  Layers,
+  ListChecks,
   Menu,
   Rss,
   Settings,
@@ -19,6 +21,8 @@ import { useAppState } from "@/state/AppState";
 const navItems = [
   { to: "/dashboard", label: "Dashboard", icon: Home },
   { to: "/challenge", label: "Today's Challenge", icon: Target },
+  { to: "/challenges", label: "Challenges", icon: ListChecks },
+  { to: "/tracks", label: "Tracks", icon: Layers },
   { to: "/proof", label: "My Proof", icon: BadgeCheck },
   { to: "/projects", label: "Projects", icon: BarChart3 },
   { to: "/builders", label: "Builders", icon: Users },

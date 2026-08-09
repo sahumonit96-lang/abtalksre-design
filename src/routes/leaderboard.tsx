@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Flame } from "lucide-react";
+import { Flame, Zap } from "lucide-react";
 import { AppShell } from "@/components/layout/AppShell";
 import { buildLeaderboard, demoUser } from "@/data/demoData";
 import { useAppState } from "@/state/AppState";
@@ -21,19 +21,22 @@ export const Route = createFileRoute("/leaderboard")({
   component: LeaderboardPage,
 });
 
-const tabs = ["Global", "College", "Friends"] as const;
+const tabs = ["Weekly", "Monthly", "All Time"] as const;
 
 function LeaderboardPage() {
-  const { streak, daysCompleted, projectsShipped } = useAppState();
-  const [tab, setTab] = useState<(typeof tabs)[number]>("Global");
+  const { streak, daysCompleted, projectsShipped, xp } = useAppState();
+  const [tab, setTab] = useState<(typeof tabs)[number]>("All Time");
 
-  const all = buildLeaderboard({ streak, daysCompleted, projects: projectsShipped });
-  const rows =
-    tab === "College"
-      ? all.filter((r) => r.college === demoUser.college)
-      : tab === "Friends"
-        ? all.filter((r) => r.isCurrentUser || r.rank <= 4)
-        : all;
+  const scale = tab === "Weekly" ? 0.18 : tab === "Monthly" ? 0.55 : 1;
+  const rows = buildLeaderboard({ streak, daysCompleted, projects: projectsShipped, xp })
+    .map((r) => ({
+      ...r,
+      xp: Math.round(r.xp * scale),
+      daysCompleted: Math.max(1, Math.round(r.daysCompleted * scale)),
+      streak: Math.max(1, Math.round(r.streak * scale)),
+    }))
+    .sort((a, b) => b.xp - a.xp)
+    .map((r, i) => ({ ...r, rank: i + 1 }));
 
   return (
     <AppShell title="Leaderboard">
@@ -43,11 +46,11 @@ function LeaderboardPage() {
             60-Day Builder Leaderboard
           </h1>
           <p className="mt-1.5 text-sm text-muted-foreground">
-            Rankings reward consistent verified building — not just check-ins.
+            Ranked by XP: consistency, completed challenges and shipped proof.
           </p>
         </header>
 
-        <div className="flex flex-wrap gap-2" role="tablist" aria-label="Leaderboard scope">
+        <div className="flex flex-wrap gap-2" role="tablist" aria-label="Leaderboard range">
           {tabs.map((t) => (
             <button
               key={t}
@@ -86,6 +89,9 @@ function LeaderboardPage() {
                 </p>
                 <p className="truncate text-xs text-muted-foreground">
                   {r.daysCompleted} / 60 days · {r.projects} projects
+                </p>
+                <p className="mt-0.5 flex items-center gap-1 truncate text-xs font-extrabold text-primary">
+                  <Zap className="h-3 w-3 shrink-0" aria-hidden="true" /> {r.xp.toLocaleString()} XP
                 </p>
               </div>
               <p className="flex shrink-0 items-center gap-1.5 text-sm font-extrabold text-flame">
