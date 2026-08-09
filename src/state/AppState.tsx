@@ -231,7 +231,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
           {
             id: `act-${Date.now()}`,
             kind: "track" as const,
-            title: `Track set to ${trackById(trackId).name}`,
+            title: `Track set to ${trackById(trackId)!.name}`,
             detail: "Your daily challenges now follow this track",
             at: nowLabel(),
           },

@@ -49,7 +49,7 @@ export const tracks: Track[] = [
   },
 ];
 
-export const trackById = (id: TrackId) => tracks.find((t) => t.id === id) ?? tracks[0];
+export const trackById = (id: TrackId): Track => tracks.find((t) => t.id === id) ?? tracks[0]!;
 
 interface Brief {
   title: string;
